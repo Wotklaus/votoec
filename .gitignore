@@ -1,0 +1,24 @@
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Dependencias
+node_modules/
+
+# Compilación y generados
+dist/
+build/
+cache/
+artifacts/
+coverage/
+typechain-types/
+
+# Logs
+logs/
+
+# IDE
+.idea/
+
+# Revisión interna de seguridad
+REVISION.md

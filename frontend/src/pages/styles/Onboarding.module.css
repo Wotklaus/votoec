@@ -1,0 +1,137 @@
+/* src/pages/styles/Onboarding.module.css */
+
+.onboardingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Un fondo claro y neutro */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.onboardingCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 550px; /* Un poco más ancho para el contenido */
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espacio entre elementos */
+    justify-content: center;
+    align-items: center;
+}
+
+.onboardingCard h2 {
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.onboardingCard p {
+    color: #555;
+    font-size: 1.15em;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.onboardingImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 20px; /* Espacio entre los botones */
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+}
+
+/* Estilo para el botón principal (Ir al Login) */
+.actionButton {
+    background-color: #40566d; /* Usando tu --color-primary directamente o define una variable aquí */
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-grow: 1; /* Permite que el botón crezca */
+    min-width: 180px; /* Ancho mínimo para el botón */
+}
+
+.actionButton:hover {
+    background-color: #34495e; /* Un tono más oscuro */
+    transform: translateY(-2px);
+}
+
+/* Estilo para los botones de navegación (anterior/siguiente) */
+.navigateButton {
+    background-color: #f0f2f5; /* Un color de fondo más claro */
+    color: #40566d; /* Color de texto primario */
+    padding: 15px 25px;
+    border: 2px solid #40566d; /* Borde con el color primario */
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    flex-grow: 1; /* Permite que el botón crezca */
+    min-width: 120px; /* Ancho mínimo */
+}
+
+.navigateButton:hover {
+    background-color: #e0e0e0; /* Un gris más oscuro al pasar el ratón */
+    color: #2c3e50; /* Texto más oscuro */
+    transform: translateY(-2px);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .onboardingCard {
+        padding: 30px;
+        gap: 15px;
+    }
+
+    .onboardingCard h2 {
+        font-size: 1.8em;
+    }
+
+    .onboardingCard p {
+        font-size: 1em;
+    }
+
+    .buttonGroup {
+        flex-direction: column; /* Botones apilados en pantallas pequeñas */
+        gap: 15px;
+    }
+
+    .actionButton,
+    .navigateButton {
+        font-size: 1em;
+        padding: 12px 20px;
+        min-width: unset; /* Elimina el ancho mínimo para que se ajusten mejor */
+    }
+}
+
+@media (max-width: 480px) {
+    .onboardingCard {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .onboardingCard h2 {
+        font-size: 1.5em;
+    }
+
+    .onboardingCard p {
+        font-size: 0.9em;
+    }
+}

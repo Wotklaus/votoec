@@ -1,0 +1,198 @@
+/* src/pages/styles/LandingCarousel.module.css */
+
+.carouselContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Muy importante para ocultar los paneles no visibles */
+    background-color: #f0f2f5; /* Fondo similar al AdminPanel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carouselInner {
+    display: flex; /* Alinea los paneles horizontalmente */
+    height: 100%;
+    width: 300%; /* Ancho total para 3 paneles (100% * 3) */
+    transition: transform 0.7s ease-in-out; /* Transición suave para el deslizamiento */
+}
+
+.carouselPanel {
+    flex-shrink: 0; /* Evita que los paneles se encojan */
+    width: 33.333%; /* Cada panel toma 1/3 del ancho del carouselInner */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.panelContent {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 500px; /* Ancho máximo para el contenido de los paneles */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px; /* Altura mínima para las tarjetas, para que sean consistentes */
+}
+
+.panelContent h2 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.panelContent p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.carouselImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Botones de navegación (flechas) */
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(41, 57, 61, 0.7); /* Color de sidebar con transparencia */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navButton:hover {
+    background: rgba(41, 57, 61, 0.9);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.navButton.prev {
+    left: 20px;
+}
+
+.navButton.next {
+    right: 20px;
+}
+
+/* Indicadores de panel (dots) */
+.dotsContainer {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(41, 57, 61, 0.4); /* Gris oscuro transparente */
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.activeDot {
+    background-color: var(--color-primary, #40566d); /* Usa tu color primario */
+    transform: scale(1.2);
+}
+
+/* Botón de acción (Ir al Login) */
+.actionButton {
+    background-color: var(--color-primary, #40566d); /* Tu color primario */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.actionButton:hover {
+    background-color: #34495e; /* Un tono más oscuro del primary */
+    transform: translateY(-2px);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .panelContent {
+        padding: 30px;
+        max-width: 90%;
+        min-height: 350px;
+    }
+
+    .panelContent h2 {
+        font-size: 1.6em;
+    }
+
+    .panelContent p {
+        font-size: 1em;
+    }
+
+    .navButton {
+        padding: 10px;
+        font-size: 1.5em;
+    }
+
+    .navButton.prev {
+        left: 10px;
+    }
+
+    .navButton.next {
+        right: 10px;
+    }
+
+    .dotsContainer {
+        bottom: 20px;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .actionButton {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .panelContent {
+        padding: 20px;
+        min-height: 300px;
+    }
+
+    .panelContent h2 {
+        font-size: 1.4em;
+    }
+
+    .panelContent p {
+        font-size: 0.9em;
+    }
+}

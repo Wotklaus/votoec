@@ -1,0 +1,907 @@
+/* Customer.module.css */
+
+/* Variables CSS para una paleta de colores ligeramente diferente para la vista del cliente */
+:root {
+  --color-customer-light-bg: #edf0f3;
+  /* Fondo claro con un ligero tinte azulado */
+  --color-customer-sidebar-bg: #2c4655;
+  /* Un azul claro más distintivo para la barra lateral */
+  --color-customer-main-content-bg: #ffffff;
+  /* Fondo blanco para el contenido principal */
+  --color-customer-text-primary: #ffffff;
+  /* Texto más oscuro para mejor contraste */
+  --color-customer-text-secondary: #08090a;
+  /* Texto secundario en gris azulado */
+  --color-customer-primary: #4d6788;
+  /* Un azul vibrante como color principal */
+  --color-customer-emphasis: #2ac52f;
+  /* Verde para éxito o elementos importantes */
+  --color-customer-error: #c0b5b5;
+  /* Rojo para errores o acciones de eliminar */
+  --color-customer-border: #9c9c9c70;
+  /* Borde en un azul más claro */
+  --color-customer-table-header-bg: #94afad;
+  /* Azul muy claro para el encabezado de tabla */
+  --color-customer-table-header-text: #000000;
+  /* Texto oscuro para el encabezado de tabla */
+  --color-customer-table-row-hover: #dadada;
+  /* Fondo muy claro al pasar el ratón por las filas */
+  --color-customer-button-primary-bg: var(--color-customer-primary);
+  /* Color de fondo del botón primario */
+  --color-customer-button-primary-text: #ffffff;
+  /* Color de texto del botón primario */
+  --color-customer-button-primary-hover-bg: #90a093;
+  /* Color de fondo del botón primario al pasar el ratón */
+  --color-customer-button-secondary-bg: #90a4ae;
+  /* Color de fondo del botón secundario */
+  --color-customer-button-secondary-text: #ffffff;
+  /* Color de texto del botón secundario */
+  --color-customer-button-secondary-hover-bg: #78909c;
+  /* Color de fondo del botón secundario al pasar el ratón */
+  --color-customer-button-delete-bg: var(--color-customer-error);
+  /* Color de fondo del botón de eliminar */
+  --color-customer-button-delete-text: #ffffff;
+  /* Color de texto del botón de eliminar */
+  --color-customer-button-delete-hover-bg: #ffffff;
+  /* Color de fondo del botón de eliminar al pasar el ratón */
+  --color-customer-button-link-text: var(--color-customer-primary);
+  /* Color de texto para enlaces/botones de enlace */
+  --color-customer-button-link-hover-text: #1565c0;
+  /* Color de texto para enlaces/botones de enlace al pasar el ratón */
+
+  /* Colores para el estilo de blockchainData en la vista del cliente (se mantendrán comentados o con isBlockchainData=false para "eliminar auditoría") */
+  --color-customer-blockchain-text: #36ac54;
+  /* Azul más oscuro para texto de blockchain */
+  --color-customer-blockchain-bg-subtle: rgba(155, 94, 37, 0.08);
+  /* Fondo ligeramente más prominente para destacar */
+
+  /* RGBA versions for dynamic opacity */
+  --color-customer-primary-rgb: 112, 129, 115;
+  /* RGB de #708173 */
+  --color-customer-error-rgb: 7, 7, 7;
+  /* RGB de #070707 */
+  --color-customer-emphasis-rgb: 153, 235, 156;
+  /* RGB de #99eb9c */
+}
+
+/* Estilos Generales del Panel de Usuario */
+.userPanel {
+  display: flex;
+  /* Usa flexbox para el diseño de la barra lateral y el contenido principal */
+  height: 100vh;
+  /* Ocupa el 100% de la altura de la ventana */
+  width: 100vw;
+  /* Ocupa el 100% del ancho de la ventana */
+  margin: 0;
+  /* Sin margen externo */
+  padding: 0;
+  /* Sin padding externo */
+  font-family: "Roboto", sans-serif;
+  /* Fuente ligeramente diferente para la vista del cliente */
+  background-color: var(--color-customer-light-bg);
+  /* Color de fondo general del panel */
+  color: var(--color-customer-text-primary);
+  /* Color de texto primario */
+  overflow: hidden;
+  /* Oculta el desbordamiento */
+  box-sizing: border-box;
+  /* Incluye padding y borde en el tamaño total */
+}
+
+/* Sidebar (Barra Lateral) */
+.sidebar {
+  width: 230px;
+  /* Ancho ligeramente mayor para la barra lateral */
+  background-color: var(--color-customer-sidebar-bg);
+  /* Color de fondo de la barra lateral */
+  padding: 2rem 1.8rem;
+  /* Padding interno */
+  display: flex;
+  /* Usa flexbox para organizar los elementos internos */
+  flex-direction: column;
+  /* Organiza los elementos en columna */
+  gap: 1rem;
+  /* Espacio entre los elementos hijos */
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.08);
+  /* Sombra más fuerte hacia la derecha */
+  border-right: 1px solid var(--color-customer-border);
+  /* Borde derecho */
+  flex-shrink: 0;
+}
+
+
+
+
+
+
+.actionButtons {
+  margin-top: 1.5rem;
+  /* Margen superior */
+  display: flex;
+  /* Usa flexbox para los botones */
+  flex-direction: column;
+  /* Organiza los botones en columna */
+  gap: 0.7rem;
+  /* Espacio entre los botones */
+}
+
+.sidebar button {
+  background: none;
+  /* Sin fondo */
+  border: none;
+  /* Sin borde */
+  color: var(--color-customer-text-primary);
+  /* Color de texto del botón */
+  font-weight: 500;
+  /* Peso de la fuente */
+  font-size: 1.09em;
+  /* Texto ligeramente más grande */
+  padding: 0.8rem 1.2rem;
+  /* Padding interno */
+  border-radius: 6px;
+  /* Botones más redondeados */
+  text-align: left;
+  /* Alineación del texto a la izquierda */
+  cursor: pointer;
+  /* Cursor de puntero al pasar por encima */
+  transition: background-color 0.2s ease, color 0.2s ease,
+    transform 0.1s ease;
+  /* Transiciones suaves */
+  user-select: none;
+  /* Evita que el texto sea seleccionable */
+  display: flex;
+  /* Para alinear el icono y el texto */
+  align-items: center;
+  /* Centra verticalmente */
+  gap: 0.7rem;
+  /* Espacio entre el icono y el texto */
+}
+
+.sidebar button:hover {
+  background-color: rgb(255, 255, 255);
+  /* Fondo ligeramente más oscuro al pasar el ratón */
+  color: var(--color-customer-primary);
+  /* Cambia el color del texto al pasar el ratón */
+  transform: translateX(3px);
+  /* Efecto sutil de deslizamiento */
+}
+
+.sidebar button.activeButton {
+  background-color: var(--color-customer-primary);
+  /* Fondo del botón activo */
+  color: var(--color-customer-button-primary-text);
+  /* Color de texto del botón activo */
+  font-weight: 600;
+  /* Peso de la fuente más grueso para el botón activo */
+  box-shadow: 0 2px 5px rgba(236, 207, 207, 0.1);
+  /* Sombra para el botón activo */
+}
+
+.sidebar button.activeButton:hover {
+  background-color: var(--color-customer-button-primary-hover-bg);
+  /* Fondo del botón activo al pasar el ratón */
+  color: var(--color-customer-button-primary-text);
+  /* Color de texto del botón activo al pasar el ratón */
+  transform: none;
+  /* Elimina el efecto de deslizamiento al pasar por el activo */
+}
+
+.sidebar button.logoutButton {
+  background-color: transparent;
+  /* Fondo transparente */
+  border: 1px solid var(--color-customer-error);
+  /* Borde rojo */
+  color: var(--color-customer-error);
+  /* Texto rojo */
+  margin-top: 2rem;
+  /* Margen superior mayor */
+  transition: color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+  /* Transiciones suaves */
+}
+
+.sidebar button.logoutButton:hover {
+  background-color: rgba(var(--color-customer-error-rgb), 0.1);
+  /* Fondo rojo semitransparente al pasar el ratón */
+  color: var(--color-customer-error);
+  /* Mantiene el color del texto */
+  border-color: var(--color-customer-error);
+  /* Mantiene el color del borde */
+}
+
+.menuIcon {
+  font-size: 1.2rem;
+  /* Tamaño del icono */
+  line-height: 1;
+  /* Asegura que no agregue espacio extra */
+}
+
+.divider {
+  height: 1px;
+  /* Altura del divisor */
+  background-color: var(--color-customer-border);
+  /* Color del divisor */
+  margin: 1.2rem 0;
+  /* Margen superior e inferior */
+}
+
+/* Main Content (Contenido Principal) */
+.mainContent {
+  flex-grow: 1;
+  /* Ocupa el espacio restante disponible */
+  padding: 2.5rem 3.5rem;
+  /* Mayor padding interno */
+  overflow-y: auto;
+  /* Habilita el scroll vertical si el contenido excede el tamaño */
+  background-color: var(--color-customer-main-content-bg);
+  /* Color de fondo del contenido principal */
+  border-radius: 10px;
+  /* Esquinas más redondeadas */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  /* Sombra más suave y grande */
+  border: 1px solid var(--color-customer-border);
+  /* Borde */
+  margin: 25px;
+  /* Margen mayor para un efecto flotante */
+  display: flex;
+  /* Usa flexbox para organizar las secciones */
+  flex-direction: column;
+  /* Organiza las secciones en columna */
+  gap: 1.5rem;
+  /* Reducido el espacio entre secciones */
+}
+
+.sectionTitle {
+  font-weight: 600;
+  /* Peso de la fuente más grueso */
+  font-size: 1.35rem;
+  /* Título de sección más grande */
+  margin-bottom: 1.2rem;
+  /* Margen inferior */
+  color: var(--color-customer-text-primary);
+  /* Color del título */
+  display: flex;
+  /* Usa flexbox para alinear el icono y el texto */
+  align-items: center;
+  /* Centra verticalmente */
+  gap: 0.6rem;
+  /* Espacio entre el icono y el texto */
+}
+
+.sectionTitle .icon {
+  font-size: 1.4rem;
+  /* Tamaño del icono */
+  color: var(--color-customer-primary);
+  /* Color del icono */
+}
+
+/* Estilos de tabla */
+.tableContainer {
+  overflow-x: auto;
+  /* Permite desplazamiento horizontal si la tabla es demasiado ancha */
+  margin-top: 1.5rem;
+  /* Espacio superior para la tabla */
+  border-radius: 8px;
+  /* Bordes redondeados para el contenedor de la tabla */
+  border: 1px solid var(--color-customer-border);
+  /* Borde alrededor de la tabla */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* Sombra sutil */
+}
+
+.tableWrapper {
+  display: block;
+  /* Necesario para el overflow-x en el contenedor */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+}
+
+.table {
+  width: 100%;
+  /* Ocupa todo el ancho del contenedor */
+  border-collapse: collapse;
+  /* Colapsa los bordes de la tabla */
+  min-width: 700px;
+  /* Ancho mínimo para evitar que se vea mal en pantallas pequeñas */
+}
+
+.thead {
+  background-color: var(--color-customer-table-header-bg);
+  /* Fondo del encabezado de tabla */
+}
+
+.th {
+  padding: 0.9rem 1.2rem;
+  /* Padding de las celdas de encabezado */
+  text-align: left;
+  /* Alineación del texto a la izquierda */
+  font-weight: 600;
+  /* Peso de la fuente del encabezado */
+  color: var(--color-customer-table-header-text);
+  /* Color de texto del encabezado */
+  font-size: 0.85rem;
+  /* Tamaño de fuente más pequeño para los encabezados */
+  letter-spacing: 0.05em;
+  /* Espaciado entre letras */
+  text-transform: uppercase;
+  /* Texto en mayúsculas */
+}
+
+.tr {
+  border-bottom: 1px solid var(--color-customer-border);
+  /* Borde inferior para las filas */
+  transition: background-color 0.2s ease;
+  /* Transición suave para el hover */
+  color: #000000;
+}
+
+.tr:last-child {
+  border-bottom: none;
+  /* No hay borde inferior en la última fila */
+}
+
+.tr:hover {
+  background-color: var(--color-customer-table-row-hover);
+  /* Fondo al pasar el ratón por la fila */
+}
+
+.td {
+  padding: 0.8rem 1.2rem;
+  /* Padding de las celdas de datos */
+  color: black;
+  /* Color de texto de las celdas */
+  font-size: 0.9rem;
+  /* Tamaño de fuente de las celdas */
+  vertical-align: middle;
+  /* Alineación vertical al centro */
+}
+
+/* Estilos de Mensajes (Loading, Error, No Data) */
+.loadingMessage,
+.errorMessage,
+.noDataMessage {
+  text-align: center;
+  /* Alineación del texto al centro */
+  padding: 1.5rem;
+  /* Padding interno */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  margin: 2rem auto;
+  /* Margen automático para centrar horizontalmente */
+  max-width: 600px;
+  /* Ancho máximo */
+  font-size: 1.1rem;
+  /* Tamaño de fuente */
+}
+
+.loadingMessage {
+  background-color: rgba(var(--color-customer-primary-rgb),
+      0.1);
+  /* Fondo claro de color primario */
+  color: var(--color-customer-primary);
+  /* Color de texto primario */
+  border: 1px solid var(--color-customer-primary);
+  /* Borde primario */
+}
+
+.errorMessage {
+  background-color: rgba(var(--color-customer-error-rgb),
+      0.1);
+  /* Fondo claro de color de error */
+  color: var(--color-customer-error);
+  /* Color de texto de error */
+  border: 1px solid var(--color-customer-error);
+  /* Borde de error */
+}
+
+.noDataMessage {
+  background-color: #f0f4f7;
+  /* Fondo ligeramente grisáceo */
+  color: var(--color-customer-text-secondary);
+  /* Color de texto secundario */
+  border: 1px solid var(--color-customer-border);
+  /* Borde */
+}
+
+/* Estilos de Profile Card */
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  /* Centrar horizontalmente el profileCard */
+  margin-bottom: 0;
+  /* No margin-bottom, ya que es la única sección principal ahora */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+}
+
+.profileCard {
+  background-color: #f7f7f7;
+  /* Fondo más claro para la tarjeta de perfil */
+  padding: 2.5rem 3rem;
+  /* Padding aumentado para un look más espacioso */
+  border-radius: 15px;
+  /* Bordes más redondeados */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  /* Sombra más pronunciada y suave */
+  display: flex;
+  /* Usa flexbox para alinear el avatar y la información */
+  align-items: center;
+  /* Centra verticalmente */
+  gap: 2.rem;
+  /* Espacio aumentado entre el avatar y la información */
+  /*max-width: 120px; /* Ancho máximo para la tarjeta de perfil, hazlo más rectangular */
+  width: 1150px;
+  /* Asegura que ocupe el ancho disponible dentro del contenedor */
+  border: 1px solid var(--color-customer-border);
+  height: 2000px;
+  color: #000000;
+
+}
+
+.profileAvatar {
+  flex-shrink: 0;
+  /* Evita que el avatar se encoja */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  /* Tamaño fijo más grande para el círculo del avatar */
+  height: 250px;
+  /* Tamaño fijo más grande para el círculo del avatar */
+  border-radius: 50%;
+  /* Forma circular */
+  background-color: var(--color-customer-primary);
+  /* Color de fondo del avatar */
+  color: #000000dc;
+  /* Color del icono dentro del avatar */
+  margin-right: 1.9rem;
+  /* Espacio a la derecha del avatar */
+  border-color: #979292;
+
+  background-color: hsl(204, 6%, 85%);
+}
+
+.profileAvatar svg {
+  width: 60px;
+  /* Tamaño del icono más grande */
+  height: 60px;
+  /* Tamaño del icono más grande */
+}
+
+.profileInfo {
+  flex-grow: 1;
+  /* Permite que la información ocupe el espacio restante */
+  color:#000000;
+}
+
+.profileInfo p {
+  display: flex;
+  /* Para alinear el icono y el texto de cada línea */
+  align-items: center;
+  /* Centra verticalmente */
+  gap: 0.8rem;
+  /* Espacio aumentado entre el icono y el texto */
+  margin-bottom: 0.8rem;
+  /* Espacio aumentado entre líneas de información */
+  font-size: 1.09rem;
+  /* Tamaño de fuente para la información del perfil */
+}
+
+.profileInfo p:last-child {
+  margin-bottom: 0;
+  /* Sin margen inferior en el último párrafo */
+}
+
+.profileInfo strong {
+  font-weight: 600;
+  /* Peso de la fuente más grueso para las etiquetas */
+  min-width: 110px;
+  /* Aumentado para acomodar etiquetas como "Clave Privada" */
+  display: inline-block;
+  /* Necesario para min-width */
+  color: var(--color-customer-text-secondary);
+  /* Color un poco más suave para las etiquetas */
+}
+
+.infoIcon {
+  color: var(--color-customer-primary);
+  /* Color de los iconos en la información del perfil */
+  font-size: 1.2rem;
+  /* Tamaño de los iconos de información */
+  flex-shrink: 0;
+  /* Evita que los iconos se encojan */
+}
+
+.sectionSubtitle {
+  /* Este estilo ya no se usa directamente para la wallet address en el perfil, pero se mantiene si se usa en otro lugar */
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-customer-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Estilos para el AddressDisplay (direcciones de blockchain) */
+.addressDisplay {
+  background-color: rgba(var(--color-customer-emphasis-rgb),
+      0.15);
+  /* Fondo sutil para las direcciones */
+  padding: 0.5em 0.8em;
+  /* Padding más generoso */
+  border-radius: 6px;
+  /* Bordes ligeramente redondeados */
+  font-family: "Cascadia Code", "Courier New", monospace;
+  /* Fuente monoespaciada */
+  font-size: 0.85em;
+  /* Tamaño de fuente ligeramente más pequeño */
+  color: var(--color-customer-blockchain-text);
+  /* Color de texto específico para blockchain */
+  cursor: copy;
+  /* Cursor de "copiar" */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  /* Transición suave para el hover y el borde */
+  display: inline-flex;
+  /* Para alinear el texto y el icono de copia */
+  align-items: center;
+  gap: 0.4em;
+  border: 1px solid rgba(var(--color-customer-emphasis-rgb), 0.4);
+  max-width: 100%;
+  /* Asegura que no desborde el contenedor */
+  overflow-wrap: break-word;
+  /* Permite que las palabras largas se rompan */
+  word-break: break-all;
+  /* Para cadenas sin espacios */
+}
+
+.addressDisplay:hover {
+  background-color: rgba(var(--color-customer-emphasis-rgb),
+      0.25);
+  /* Aumenta la opacidad al pasar el ratón */
+  border-color: var(--color-customer-primary);
+  /* Un borde más notorio al pasar el mouse */
+}
+
+.copyIcon {
+  font-size: 0.9em;
+  /* Tamaño del icono de copia ligeramente más grande */
+  margin-left: 0.5em;
+  /* Más espacio a la izquierda */
+  opacity: 0.9;
+  /* Un poco más visible */
+  color: var(--color-customer-blockchain-text);
+  /* Color del icono de copiar */
+  flex-shrink: 0;
+  /* Evita que el icono se encoja */
+}
+
+.blockchainData {
+  /* Este estilo se aplica cuando isBlockchainData=true, puedes ajustar si quieres una diferenciación aún mayor */
+  /* Por ejemplo, un borde aún más prominente o un color de fondo ligeramente diferente */
+  border-color: var(--color-customer-primary);
+  /* Borde primario para datos blockchain */
+}
+
+
+/* Estilos para los mensajes de votación (éxito/error) */
+.message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.message.success {
+  background-color: var(--color-customer-emphasis);
+  /* Usar el color de énfasis para éxito */
+  color: #1a5e20;
+  /* Texto verde oscuro */
+  border: 1px solid #4caf50;
+}
+
+.message.error {
+  background-color: #ffcdd2;
+  /* Rojo claro para error */
+  color: #c62828;
+  /* Rojo oscuro */
+  border: 1px solid #ef5350;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .userPanel {
+    flex-direction: column;
+    /* Coloca la barra lateral encima en pantallas pequeñas */
+    height: auto;
+    /* Altura automática para permitir el scroll */
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    /* La barra lateral ocupa todo el ancho */
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    /* Sombra hacia abajo */
+    border-right: none;
+    border-bottom: 1px solid var(--color-customer-border);
+    /* Borde inferior */
+    flex-direction: row;
+    /* Botones en fila */
+    flex-wrap: wrap;
+    /* Permite que los botones salten de línea */
+    justify-content: center;
+    /* Centra los botones */
+    gap: 0.8rem;
+  }
+
+  .sidebar-header h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+  color: #FF5733; /* <-- CAMBIA ESTE VALOR POR EL COLOR QUE QUIERAS (ej. naranja) */
+}
+
+.sidebar-header p.subtitle {
+  font-size: 0.9rem;
+  /*color: var(--color-customer-text-secondary); /* ESTA ESTÁ COMENTADA, NO TIENE EFECTO */
+  color: #4caf50; /* ESTA ES LA QUE PREVALECE */
+}
+
+  .actionButtons {
+    flex-direction: row;
+    /* Botones en fila en móviles */
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .sidebar button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95em;
+    justify-content: center;
+    /* Centra el texto del botón */
+    flex-grow: 1;
+    /* Permite que los botones crezcan */
+  }
+
+  .sidebar button.logoutButton {
+    width: 100%;
+    /* El botón de logout ocupa todo el ancho */
+  }
+
+  .mainContent {
+    margin: 15px;
+    /* Margen más pequeño en móvil */
+    padding: 1.5rem;
+
+  }
+
+  .profileCard {
+    flex-direction: column;
+    /* Apila el avatar y la información */
+    text-align: center;
+    gap: 1.5rem;
+    /* Ajuste el espacio para móviles */
+    padding: 1.5rem;
+  }
+
+  .profileAvatar {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    /* Espacio debajo del avatar */
+  }
+
+  .profileAvatar svg {
+    width: 50px;
+    /* Tamaño un poco más pequeño en móvil para el icono del avatar */
+    height: 50px;
+  }
+
+  .profileInfo p {
+    justify-content: center;
+    /* Centra el texto del perfil */
+    flex-wrap: wrap;
+    /* Permite que las líneas de info se rompan si son muy largas */
+    text-align: center;
+  }
+
+  .profileInfo strong {
+    min-width: unset;
+    /* Reiniciar min-width en móviles si causa problemas de diseño */
+    text-align: right;
+    /* Alinea la etiqueta a la derecha */
+    flex-grow: 0;
+  }
+
+  .infoIcon {
+    font-size: 1.1rem;
+    /* Tamaño del icono en móvil */
+  }
+
+  .addressDisplay {
+    font-size: 0.75em;
+    /* Un poco más pequeño en móvil */
+    padding: 0.4em 0.6em;
+  }
+
+  .th,
+  .td {
+    padding: 0.6rem 0.8rem;
+    /* Reducir padding de tabla */
+    font-size: 0.8rem;
+  }
+}
+
+/* --- NUEVOS ESTILOS PARA LA SECCIÓN DE EDICIÓN --- */
+
+/* Contenedor de los inputs editables (en customer.jsx, sería el div que envuelve cada label e input) */
+.editInputGroup {
+  display: flex;
+  align-items: center; /* Alinea el label y el input verticalmente */
+  gap: 1rem; /* Espacio entre el label y el input */
+  margin-bottom: 1rem; /* Espacio entre cada grupo de input */
+}
+
+/* Etiqueta de los inputs en modo edición */
+.editInputLabel {
+  font-weight: 600; /* Negrita */
+  min-width: 110px; /* Ancho mínimo para alinear etiquetas */
+  color: #000000; /* Puedes ajustar este color */
+  font-size: 1.09rem; /* Tamaño de fuente */
+}
+
+/* Estilos para los campos de entrada en modo edición */
+.editInput {
+  flex-grow: 1; /* Permite que el input ocupe el espacio restante */
+  padding: 0.8rem 1rem; /* Padding interno */
+  border: 1px solid #cfd0d1; /* Borde suave (color de --color-customer-border) */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 1.05rem; /* Tamaño de fuente */
+  color: #08090a; /* Color de texto (color de --color-customer-text-secondary) */
+  background-color: #fcfcfc; /* Fondo casi blanco */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves */
+  width: 90%; /* Asegura que el input ocupe el espacio disponible */
+  box-sizing: border-box; /* Incluye padding y borde en el ancho */
+}
+
+.editInput:focus {
+  outline: none; /* Elimina el contorno por defecto */
+  border-color: #4d6788; /* Color de borde al enfocar (color de --color-customer-primary) */
+  box-shadow: 0 0 0 3px rgba(77, 103, 136, 0.2); /* Sombra suave al enfocar (usando el RGB del color primario) */
+}
+
+/* Estilos para los mensajes de éxito/error de edición */
+.editMessage {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 20px; /* Margen superior para separarlo de los inputs */
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.editMessage.success {
+  background-color: #c3f7c5; /* Verde claro (color de --color-customer-emphasis) */
+  color: #1b8d24; /* Texto verde oscuro */
+  border: 1px solid #4caf50; /* Borde verde */
+}
+
+.editMessage.error {
+  background-color: #ffcdd2; /* Rojo claro */
+  color: #c62828; /* Rojo oscuro */
+  border: 1px solid #ef5350; /* Borde rojo */
+}
+
+/* Contenedor de los botones de edición (Guardar y Cancelar) */
+.editButtons {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  gap: 15px; /* Espacio entre los botones */
+  margin-top: 25px; /* Espacio superior para separarlo de los inputs/mensajes */
+  padding-top: 15px;
+  border-top: 1px solid #cfd0d1; /* Separador visual (color de --color-customer-border) */
+}
+
+/* Estilo base para los botones de edición y el botón de actualizar perfil */
+.updateProfileButton,
+.cancelButton,
+.saveButton {
+  padding: 12px 25px; /* Tamaño del botón */
+  border: none;
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 0.5px; /* Espaciado entre letras */
+  margin-top: 20px;
+}
+
+/* Estilo específico para el botón "Actualizar Perfil" (fuera del modo edición) */
+.updateProfileButton {
+  background-color: #d6dae2; /* Azul primario (color de --color-customer-button-primary-bg) */
+  color: #000000; /* Texto blanco (color de --color-customer-button-primary-text) */
+  margin-top: 25px; /* Espacio superior */
+  align-self: flex-end; /* Alinea a la derecha si el contenedor principal es flex-column */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  position:fixed;
+  
+}
+
+.updateProfileButton:hover {
+  background-color: #90a093; /* Color de hover (color de --color-customer-button-primary-hover-bg) */
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada en hover */
+}
+
+/* Estilo específico para el botón "Cancelar" (en modo edición) */
+.cancelButton {
+  background-color: #c91d1de5; /* Color secundario (color de --color-customer-button-secondary-bg) */
+  color: #ffffff; /* Texto blanco (color de --color-customer-button-secondary-text) */
+  border: 1px solid #78909c; /* Borde (color de --color-customer-button-secondary-hover-bg) */
+  border: 1px solid #f8f8f8; /* Borde verde más oscuro */
+}
+
+.cancelButton:hover {
+  background-color: #a31212; /* Color de hover (color de --color-customer-button-secondary-hover-bg) */
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.1);
+  border: 1px solid #ac2b2b; /* Borde verde más oscuro */
+}
+
+/* Estilo específico para el botón "Guardar" (en modo edición) */
+.saveButton {
+  background-color: #425966; /* Verde de énfasis (color de --color-customer-emphasis) */
+  color: #ffffff; /* Texto verde oscuro (para contraste) */
+  border: 1px solid #ffffff; /* Borde verde más oscuro */
+}
+
+.saveButton:hover {
+  background-color: #132e4d; /* Tono más oscuro de verde para hover */
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Responsive adjustments para los botones y inputs de edición --- */
+@media (max-width: 768px) {
+  .editButtons {
+    flex-direction: column; /* Apila los botones Guardar/Cancelar en móviles */
+    gap: 10px; /* Menor espacio entre ellos */
+  }
+
+  .editButtons button {
+    width: 100%; /* Hacen que los botones ocupen todo el ancho */
+    justify-content: center; /* Centra el texto del botón */
+    padding: 10px 15px; /* Padding más compacto en móvil */
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .updateProfileButton {
+    width: 100%; /* Ocupa todo el ancho en móvil */
+    align-self: center; /* Centrar el botón "Actualizar Perfil" */
+    margin-top: 20px; /* Ajusta el margen en móvil */
+  
+  }
+
+  .editInputGroup {
+    flex-direction: column; /* Apila label e input en móviles */
+    align-items: flex-start; /* Alinea el label a la izquierda */
+    gap: 0.5rem; /* Menor espacio */
+  }
+
+  .editInputLabel {
+    width: 100%; /* Ocupa todo el ancho */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+}

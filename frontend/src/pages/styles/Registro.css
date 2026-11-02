@@ -1,0 +1,122 @@
+body {
+
+  height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    width: 100vw;  /* Ocupa el 100% del ancho de la ventana */
+    
+    /* Imagen de fondo (asegúrate de que la ruta sea correcta) */
+    background-color: #102338;
+    background-size: cover;      /* Cubre todo el espacio disponible */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat;/* Evita que la imagen se repita */
+
+    display: flex;          /* Usa Flexbox para centrar el .home-container */
+    align-items: center;    /* Centra verticalmente */
+    justify-content: center;/* Centra horizontalmente */
+
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor */
+.registro-container {
+  background-color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Título */
+.registro-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #000000;
+}
+
+/* Grupos de entrada */
+.registro-input-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.registro-input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.registro-input-group input {
+  padding: 0.75rem;
+  border: 1px solid #b3a8a8;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #ececec;
+  color: #000000;
+}
+
+.registro-input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón */
+.registro-container button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #1b343e;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.registro-container button:hover:not(:disabled) {
+  background-color: #444745;
+}
+
+.registro-container button:disabled {
+  background-color: #b1ddb7;
+  cursor: not-allowed;
+}
+
+/* Mensaje */
+.registro-mensaje {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.registro-volver {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.volver-btn {
+  background-color: #255075;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.volver-btn:hover {
+  background-color: #5a6268;
+}
+

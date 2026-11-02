@@ -1,0 +1,102 @@
+/* src/pages/styles/Eventscontroller.module.css */
+
+.eventsDashboard {
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.eventsDashboard h1 {
+    font-size: 2em;
+    color: #000000; /* Un azul más oscuro para el título principal */
+    margin-bottom: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.eventsDashboard h2 {
+    font-size: 1.5em;
+    color: #030303; /* Azul vibrante para los subtítulos de sección */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d6c2c2;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.eventsDashboard pre {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.85em;
+    white-space: pre-wrap; /* Para que el texto se envuelva */
+    word-break: break-all; /* Para romper palabras largas */
+    margin-bottom: 15px;
+}
+
+/* Contenedor de columnas */
+.columnsContainer {
+    display: flex; /* Habilita Flexbox */
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan si no hay espacio */
+    gap: 20px; /* Espacio entre las columnas */
+    justify-content: center; /* Centra las columnas horizontalmente */
+}
+
+.column {
+    flex: 1; /* Permite que las columnas crezcan y se encojan */
+    min-width: 45%; /* Ancho mínimo para que quepan dos en una fila, ajusta si es necesario */
+    max-width: 48%; /* Ancho máximo para evitar que una columna ocupe todo el espacio */
+    display: flex;
+    flex-direction: column; /* Para que las secciones dentro de la columna se apilen verticalmente */
+    gap: 20px; /* Espacio entre las secciones dentro de la columna */
+}
+
+/* Estilo para las tarjetas de sección */
+.sectionCard {
+    background-color: #91a07a;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    flex-grow: 1; /* Permite que las tarjetas crezcan para llenar el espacio disponible en la columna */
+}
+
+.eventList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.eventList li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.eventList li strong {
+    color: #495057;
+}
+
+.icon {
+    font-size: 1.2em; /* Ajusta el tamaño del icono */
+    margin-right: 5px;
+}
+
+/* Media Queries para responsividad (opcional pero recomendado) */
+@media (max-width: 768px) {
+    .column {
+        min-width: 100%; /* En pantallas pequeñas, las columnas se apilan */
+        max-width: 100%;
+    }
+}

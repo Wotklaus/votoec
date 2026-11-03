@@ -4,6 +4,7 @@ $menu = [
     'votes'   => 'Votaciones',
     'results' => 'Resultados',
     'login'   => 'Ingresar',
+    'register' => 'Registrarse',
 ];
 ?>
 <!doctype html>

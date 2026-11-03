@@ -15,6 +15,9 @@ class TemplateController
             http_response_code(404);
             $page = '404';
         }
+        if ($page === 'register' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new RegisterController())->handle();
+        }
 
         include __DIR__ . '/../../views/layout.php';
     }

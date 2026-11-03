@@ -5,6 +5,7 @@
 
 # Dependencias
 node_modules/
+vendor/
 
 # Compilación y generados
 dist/

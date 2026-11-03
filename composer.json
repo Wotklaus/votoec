@@ -1,0 +1,10 @@
+{
+    "require": {
+        "php": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "VotoEC\\": "src/"
+        }
+    }
+}

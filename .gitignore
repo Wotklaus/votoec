@@ -3,23 +3,36 @@
 .env.*
 !.env.example
 
-# Dependencias
-node_modules/
+# Dependencias de PHP (Composer)
 vendor/
 
-# Compilación y generados
+# Node (legacy/ y futuros servicios en TypeScript)
+# Sin anclar: se aplican en cualquier subcarpeta.
+node_modules/
 dist/
-build/
-cache/
-artifacts/
-coverage/
 typechain-types/
 
+# Generados en la raíz del proyecto
+# Anclados con / para no ignorar carpetas homónimas
+# (por ejemplo, bootstrap/cache/ en Laravel).
+/build/
+/cache/
+/artifacts/
+/coverage/
+
 # Logs
-logs/
+/logs/
 
 # IDE
 .idea/
 
 # Revisión interna de seguridad
 REVISION.md
+
+# Análisis internos
+ANALISIS-PERSISTENCIA.md
+ANALISIS-ESTRUCTURA.md
+
+
+# v1: solo local, como referencia
+/legacy/

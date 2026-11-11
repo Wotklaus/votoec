@@ -1,10 +1,18 @@
 {
+    "name": "wotklaus/votoec",
+    "description": "VotoEC v2: plataforma de gobernanza con blockchain",
     "require": {
-        "php": "^8.4"
+        "php": "^8.4",
+        "vlucas/phpdotenv": "^5.8"
     },
     "autoload": {
         "psr-4": {
             "VotoEC\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VotoEC\\Tests\\": "tests/"
         }
     }
 }

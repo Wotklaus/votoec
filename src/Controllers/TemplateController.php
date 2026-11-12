@@ -8,7 +8,7 @@ class TemplateController
 {
     public function render(): void
     {
-        $pages = ['home', 'votes', 'results', 'login', 'register'];
+        $pages = ['home', 'votes', 'results', 'users', 'login', 'register'];
         $page = $_GET['page'] ?? 'home';
 
         if (!in_array($page, $pages, true)) {
@@ -17,6 +17,11 @@ class TemplateController
         }
         if ($page === 'register' && $_SERVER['REQUEST_METHOD'] === 'POST') {
             (new RegisterController())->handle();
+        }
+
+        // TODO: cuando hagamos el login, esta página será solo para administradores.
+        if ($page === 'users') {
+            $users = (new UserController())->index();
         }
 
         include __DIR__ . '/../../views/layout.php';

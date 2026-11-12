@@ -3,6 +3,7 @@ $menu = [
     'home'    => 'Inicio',
     'votes'   => 'Votaciones',
     'results' => 'Resultados',
+    'users'   => 'Usuarios',
     'login'   => 'Ingresar',
     'register' => 'Registrarse',
 ];

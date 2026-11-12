@@ -1,12 +1,21 @@
 <?php
+
+declare(strict_types=1);
+
+$currentUser = $_SESSION['user'] ?? null;
+
 $menu = [
     'home'    => 'Inicio',
     'votes'   => 'Votaciones',
     'results' => 'Resultados',
-    'users'   => 'Usuarios',
-    'login'   => 'Ingresar',
-    'register' => 'Registrarse',
 ];
+
+if ($currentUser === null) {
+    $menu['login'] = 'Ingresar';
+    $menu['register'] = 'Registrarse';
+} elseif ($currentUser['role'] === 'admin') {
+    $menu['users'] = 'Usuarios';
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -22,12 +31,24 @@ $menu = [
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="?page=home"><i class="bi bi-box-seam"></i> VotoEC</a>
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
             <?php foreach ($menu as $key => $label): ?>
                 <li class="nav-item">
                     <a class="nav-link <?= $page === $key ? 'active' : '' ?>" href="?page=<?= $key ?>"><?= $label ?></a>
                 </li>
             <?php endforeach; ?>
+            <?php if ($currentUser !== null): ?>
+                <li class="nav-item">
+                    <span class="navbar-text ms-lg-3">
+                        <i class="bi bi-person-circle"></i> <?= htmlspecialchars($currentUser['name']) ?>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <form method="post" action="?page=logout" class="ms-lg-3">
+                        <button type="submit" class="btn btn-outline-light btn-sm">Salir</button>
+                    </form>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
